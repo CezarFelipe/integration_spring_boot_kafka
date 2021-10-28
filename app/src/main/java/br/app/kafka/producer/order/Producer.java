@@ -22,11 +22,11 @@ public class Producer {
     private static final String TOPIC = "final-topic";
 
     @Autowired
-    private KafkaTemplate<String, Shipping> kafkaTemplate;
+    private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(Shipping msg) {
+    public void sendMessage(String msg) {
         LOGGER.info(String.format("\n ===== Producing message in JSON ===== \n"+msg));
-        Message<Shipping> message = MessageBuilder
+        Message<String> message = MessageBuilder
                 .withPayload(msg)
                 .setHeader(KafkaHeaders.TOPIC, TOPIC)
                 .build();

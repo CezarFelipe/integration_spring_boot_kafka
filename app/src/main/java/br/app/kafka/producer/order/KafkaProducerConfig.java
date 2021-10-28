@@ -21,7 +21,7 @@ public class KafkaProducerConfig {
         private static String SERVER;
 
         @Bean
-        public ProducerFactory<String, Shipping> producerFactory(){
+        public ProducerFactory<String, String> producerFactory(){
 
             Map<String, Object> config = new HashMap<>();
 
@@ -33,7 +33,7 @@ public class KafkaProducerConfig {
         }
 
         @Bean
-        public KafkaTemplate<String, Shipping> kafkaTemplate(){
+        public KafkaTemplate<String, String> kafkaTemplate(){
             return new KafkaTemplate<>(producerFactory());
         }
     }

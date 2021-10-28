@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@EntityScan(basePackages = { "br.app.kafka.model" }) // varre pacotes de modelo
+@EntityScan(basePackages = { "br.app.kafka.model", "br.app.core.rest.mode" }) // varre pacotes de modelo
 @ComponentScan( basePackages = {"br.*"}) // varre todo o projeto - injeção de dependências
 @EnableJpaRepositories(basePackages = { "br.edu.api.repository" }) // habilita persistência
 @EnableTransactionManagement // controle transacional (gerência de transações)

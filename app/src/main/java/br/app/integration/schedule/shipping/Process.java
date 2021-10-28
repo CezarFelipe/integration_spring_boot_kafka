@@ -23,7 +23,7 @@ public class Process {
         Shipping shipping =  new Shipping();
         shipping.setCustomer("Cezar");
 
-        producer.sendMessage(shipping);
+        producer.sendMessage("shipping");
         System.out.println("Process Executou com sucesso");
     }
 }
