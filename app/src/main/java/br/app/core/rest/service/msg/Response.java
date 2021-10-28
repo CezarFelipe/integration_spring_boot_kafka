@@ -1,4 +1,4 @@
-package br.app.core.rest.msg;
+package br.app.core.rest.service.msg;
 
 import br.app.core.rest.view.RestVOResponse;
 import org.springframework.stereotype.Component;

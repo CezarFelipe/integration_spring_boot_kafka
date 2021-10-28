@@ -2,8 +2,8 @@ package br.app.core.rest.service;
 
 import br.app.core.rest.model.HttpUrl;
 import br.app.core.rest.model.HttpUrn;
-import br.app.core.rest.msg.Request;
-import br.app.core.rest.msg.Response;
+import br.app.core.rest.service.msg.Request;
+import br.app.core.rest.service.msg.Response;
 import br.app.core.rest.repository.RepositoryUrl;
 import br.app.core.rest.repository.RepositoryUrn;
 import br.app.core.rest.view.RestVORequest;
@@ -18,7 +18,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class Process{
+public class RestServiceProcess{
 
     @Autowired
     private RepositoryUrn repositoryUrn;
@@ -154,7 +154,7 @@ public class Process{
         catch (Exception e)
         {
             e.printStackTrace();
-            throw new Exception("Falha ao tentar realiazar a requisição na uri: "+request.getRestVORequest().getHttpUrl()+request.getRestVORequest().getHttpUrn()+e);
+            throw new Exception("Falha ao tentar realiazar a requisição : "+e);
         }
 
     }
@@ -183,11 +183,11 @@ public class Process{
         {
             String msg = "";
 
-            if(request.getRestVORequest().getHttpUrl()==null)
+            if((request.getRestVORequest().getHttpUrl()==null) || request.getRestVORequest().getHttpUrl().isEmpty())
             {
                 throw new Exception("A url não esta preenchida, verifique");
             }
-            if(request.getRestVORequest().getHttpUrn()==null)
+            if((request.getRestVORequest().getHttpUrn()==null) || request.getRestVORequest().getHttpUrn().isEmpty())
             {
                 throw new Exception("A urn não esta preenchida, verifique");
             }
