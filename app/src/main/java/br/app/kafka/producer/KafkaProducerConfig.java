@@ -1,6 +1,6 @@
-package br.app.kafka.producer.order;
+package br.app.kafka.producer;
 
-import br.app.kafka.model.Shipping;
+
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +17,7 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-        @Value("${order.topic}")
+        @Value("${kafka.server.producer}")
         private static String SERVER;
 
         @Bean
@@ -25,7 +25,7 @@ public class KafkaProducerConfig {
 
             Map<String, Object> config = new HashMap<>();
 
-            config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+            config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,  "localhost:9092");
             config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
             config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 

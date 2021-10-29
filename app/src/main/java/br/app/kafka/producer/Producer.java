@@ -1,4 +1,4 @@
-package br.app.kafka.producer.order;
+package br.app.kafka.producer;
 
 
 
@@ -15,16 +15,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class Producer {
     private static final Logger LOGGER = LoggerFactory.getLogger(Producer.class);
-    private static final String TOPIC = "shipping";
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(String msg) {
+    public void sendMessage(String msg, String topic, String group) {
         LOGGER.info(String.format("\n ===== Producing message in JSON ===== \n"+msg));
         Message<String> message = MessageBuilder
                 .withPayload(msg)
-                .setHeader(KafkaHeaders.TOPIC, TOPIC)
+                .setHeader(KafkaHeaders.TOPIC, topic)
+                .setHeader(KafkaHeaders.GROUP_ID, group)
                 .build();
         this.kafkaTemplate.send(message);
     }

@@ -1,7 +1,8 @@
 package br.app.integration.schedule.shipping;
 
 import br.app.core.rest.service.msg.Response;
-import br.app.kafka.producer.order.Producer;
+import br.app.kafka.config.ParamConfig;
+import br.app.kafka.producer.Producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -64,7 +65,7 @@ public class Process {
 
     void SendKafka(String pPayLoad) {
 
-        producer.sendMessage(pPayLoad);
+        producer.sendMessage(pPayLoad, ParamConfig.TOPIC_SHIPPING,ParamConfig.GROUPID_SHIPPING);
         System.out.println("Process Executou com sucesso");
     }
 
